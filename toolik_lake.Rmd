@@ -1,0 +1,51 @@
+---
+title: "Real Data EDI"
+author: "Sam Muir"
+date: "2023-08-16"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(here)
+```
+
+```{r}
+toolik_biochem <- read_csv("data/2011_Kling_Akchem.csv") %>%
+  clean_names()
+```
+
+```{r}
+inlet_biochem <- toolik_biochem %>%
+  filter(site == "Toolik Inlet") %>%
+  select(p_h, doc_u_m, tdn_u_m) %>%
+  mutate(p_h = as.numeric(p_h),
+         doc_u_m = as.numeric(doc_u_m),
+         tdn_u_m = as.numeric(tdn_u_m))
+```
+
+```{r}
+inlet_biochem %>%
+  summarise(mean_ph = mean(p_h, na.rm = TRUE),
+            mean_doc = mean(doc_u_m, na.rm = TRUE),
+            mean_tdn = mean(tdn_u_m, na.rm = TRUE))
+
+inlet_biochem %>%
+  summarize(across(where(is.numeric), mean, na.rm = TRUE))
+```
+
+```{r}
+for (i in seq_along(inlet_biochem)) {
+  means <- mean(inlet_biochem[[i]], na.rm = TRUE)
+  print(means) 
+}
+```
+
+```{r}
+inlet_biochem %>%
+  filter(p_h != "NA") %>%
+  map(mean)
+```
+
+
