@@ -35,16 +35,16 @@ if (str_detect(species, "whale")) {
 base_burrito = 6.50
 main_ingredient <- "chicken"
 
-if (str_detect(main_ingredient, "veggie")) {
-  print(base_burrito)
-} else if (str_detect(main_ingredient, "chicken")) {
-  print(base_burrito + 3) 
-} else if (str_detect(main_ingredient, "steak")) {
-  print(base_burrito + 3.25)
-}
+# if (str_detect(main_ingredient, "veggie")) {
+#   print(base_burrito)
+# } else if (str_detect(main_ingredient, "chicken")) {
+#   print(base_burrito + 3) 
+# } else if (str_detect(main_ingredient, "steak")) {
+#   print(base_burrito + 3.25)
+# }
 
 switch(main_ingredient,
-       "vaggie" = print(base_burrito),
+       "veggie" = print(base_burrito),
        "chicken" = print(base_burrito + 3),
        "steak" = print(base_burrito + 3.25))
 ```
