@@ -42,6 +42,11 @@ if (str_detect(main_ingredient, "veggie")) {
 } else if (str_detect(main_ingredient, "steak")) {
   print(base_burrito + 3.25)
 }
+
+switch(main_ingredient,
+       "vaggie" = print(base_burrito),
+       "chicken" = print(base_burrito + 3),
+       "steak" = print(base_burrito + 3.25))
 ```
 
 
